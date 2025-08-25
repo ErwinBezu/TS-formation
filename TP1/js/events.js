@@ -40,7 +40,8 @@ export function initEvents() {
   });
 
   // Suivant
-  elements.nextBtn.addEventListener("click", () => {
+  elements.nextBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     if (elements.nextBtn.classList.contains("enabled")) showProfileCard();
   });
 
