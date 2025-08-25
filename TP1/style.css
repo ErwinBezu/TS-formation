@@ -1,0 +1,421 @@
+/* Variables CSS pour les thèmes */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --card-bg: #f8f9fa;
+    --border-color: #e0e0e0;
+    --button-bg: #007bff;
+    --button-text: #ffffff;
+    --button-disabled: #6c757d;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --button-bg: #0056b3;
+    --button-text: #ffffff;
+    --button-disabled: #6c757d;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --shadow: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Formulaire principal */
+.profile-form {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Section description */
+.description-section {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.description-text {
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 15px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.change-description-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: opacity 0.2s ease;
+}
+
+.change-description-btn:hover {
+    opacity: 0.8;
+}
+
+/* Section pseudo */
+.pseudo-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.pseudo-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.pseudo-input:focus {
+    outline: none;
+    border-color: var(--button-bg);
+}
+
+.pseudo-input.error {
+    border-color: var(--error-color);
+}
+
+.pseudo-input.success {
+    border-color: var(--success-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9em;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+.pseudo-section,
+.avatar-section {
+    border: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+/* Section avatars */
+.avatar-section label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.avatar-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+}
+
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.avatar-option.selected {
+    border-color: var(--button-bg);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    transform: scale(1.1);
+}
+
+.avatar-option:hover:not(.selected) {
+    border-color: var(--button-bg);
+    opacity: 0.8;
+}
+
+/* Bouton suivant */
+.next-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--button-disabled);
+    color: var(--button-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+.next-btn.enabled {
+    background-color: var(--button-bg);
+    cursor: pointer;
+}
+
+.next-btn.enabled:hover {
+    opacity: 0.9;
+}
+
+/* Carte profil finale */
+.profile-card {
+    display: none;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow);
+    text-align: center;
+    animation: crazyCardEntrance 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes crazyCardEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg) translateY(100px);
+        filter: blur(10px) hue-rotate(180deg);
+    }
+    20% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(-90deg) translateY(50px);
+        filter: blur(5px) hue-rotate(90deg);
+    }
+    40% {
+        opacity: 0.6;
+        transform: scale(1.2) rotate(0deg) translateY(-20px);
+        filter: blur(2px) hue-rotate(45deg);
+    }
+    60% {
+        opacity: 0.8;
+        transform: scale(0.9) rotate(10deg) translateY(10px);
+        filter: blur(1px) hue-rotate(0deg);
+    }
+    80% {
+        opacity: 0.9;
+        transform: scale(1.05) rotate(-5deg) translateY(-5px);
+        filter: blur(0px) hue-rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg) translateY(0);
+        filter: blur(0px) hue-rotate(0deg);
+    }
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid var(--button-bg);
+    animation: avatarSpin 1.5s ease-out 0.3s both;
+}
+
+@keyframes avatarSpin {
+    0% {
+        transform: scale(0) rotate(720deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.3) rotate(360deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.profile-pseudo {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: textBounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.6s both;
+}
+
+@keyframes textBounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-50px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.profile-description {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    opacity: 0.8;
+    animation: textSlideIn 0.7s ease-out 0.9s both;
+}
+
+@keyframes textSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 0.8;
+        transform: translateX(0);
+        filter: blur(0px);
+    }
+}
+
+.restart-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: opacity 0.2s ease;
+    animation: buttonPop 0.5s ease-out 1.2s both;
+}
+
+@keyframes buttonPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(30px);
+    }
+    70% {
+        transform: scale(1.1) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.restart-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Sélecteur de thème */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+.theme-icon {
+    font-size: 1.2em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .profile-form, .profile-card {
+        padding: 20px;
+    }
+    
+    .avatar-grid {
+        gap: 10px;
+    }
+    
+    .avatar-option {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .theme-toggle {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 16px;
+    }
+    
+    .form-title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .avatar-option {
+        width: 50px;
+        height: 50px;
+    }
+}
